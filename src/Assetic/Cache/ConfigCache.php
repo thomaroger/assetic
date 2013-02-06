@@ -80,7 +80,13 @@ class ConfigCache
             throw new \RuntimeException('There is no cached value for '.$resource);
         }
 
-        return include $path;
+        $__return = @(include ($path));
+        
+        if (is_array($__return)) { 
+            return $__return;
+        }
+
+        return array();
     }
 
     /**
